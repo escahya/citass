@@ -1,1 +1,5 @@
 fastapi[all]
+uvicorn
+psycopg[binary]
+sentence-transformers
+python-dotenv

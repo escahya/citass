@@ -1,5 +1,7 @@
-fastapi[all]
-uvicorn
-psycopg[binary]
-sentence-transformers
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+pgvector
 python-dotenv
+sentence-transformers

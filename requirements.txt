@@ -1,7 +1,5 @@
 fastapi
-uvicorn[standard]
-sqlalchemy
-psycopg2-binary
-pgvector
-python-dotenv
+uvicorn
+psycopg[binary]
 sentence-transformers
+python-dotenv

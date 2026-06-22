@@ -51,10 +51,10 @@ class RecommendationsResponse(BaseModel):
 
 
 class FeedbackRequest(BaseModel):
-    recommendationResultId: int
-    relevanceScore: Optional[int] = None
-    openedPaper: Optional[bool] = False
-    citationInserted: Optional[bool] = False
+    recommendation_result_id: int
+    relevance_score: Optional[int] = None
+    opened_paper: Optional[bool] = False
+    citation_inserted: Optional[bool] = False
 
 
 @app.get("/health")

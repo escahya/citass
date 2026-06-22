@@ -339,38 +339,41 @@ def save_feedback(request: FeedbackRequest):
             cur.execute(
                 """
                 INSERT INTO recommendation_feedback
-                (
-                    recommendation_result_id,
-                    relevance_score,
-                    opened_paper,
-                    citation_inserted
-                )
-
-                VALUES (%s,%s,%s,%s)
-
-
-                ON CONFLICT
-                (
-                    recommendation_result_id
-                )
-
-                DO UPDATE SET
-
-                    relevance_score =
-                    COALESCE(
-                        EXCLUDED.relevance_score,
-                        recommendation_feedback.relevance_score
-                    ),
-
-
-                    opened_paper =
-                    recommendation_feedback.opened_paper
-                    OR EXCLUDED.opened_paper,
-
-
-                    citation_inserted =
-                    recommendation_feedback.citation_inserted
-                    OR EXCLUDED.citation_inserted
+                    (
+                        recommendation_result_id,
+                        relevance_score,
+                        opened_paper,
+                        citation_inserted
+                    )
+                    
+                    VALUES
+                    (
+                        %s,
+                        %s,
+                        COALESCE(%s,FALSE),
+                        COALESCE(%s,FALSE)
+                    )
+                    
+                    ON CONFLICT
+                    (
+                        recommendation_result_id
+                    )
+                    
+                    DO UPDATE SET
+                    
+                        relevance_score =
+                            COALESCE(
+                                EXCLUDED.relevance_score,
+                                recommendation_feedback.relevance_score
+                            ),
+                    
+                        opened_paper =
+                            recommendation_feedback.opened_paper
+                            OR EXCLUDED.opened_paper,
+                    
+                        citation_inserted =
+                            recommendation_feedback.citation_inserted
+                            OR EXCLUDED.citation_inserted
 
                 """,
                 (

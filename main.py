@@ -374,10 +374,10 @@ def save_feedback(request: FeedbackRequest):
 
                 """,
                 (
-                    request.recommendationResultId,
-                    request.relevanceScore,
-                    request.openedPaper,
-                    request.citationInserted
+                    request.recommendation_result_id,
+                    request.relevance_score,
+                    request.opened_paper,
+                    request.citation_inserted
                 )
             )
 
